@@ -53,7 +53,7 @@ class MLPPolicy(BasePolicy):
         raise NotImplementedError
 
     def define_forward_pass(self):
-        # TODO implement this build_mlp function in tf_utils
+        # (DONE) TODO implement this build_mlp function in tf_utils
         mean = build_mlp(self.observations_pl, output_size=self.ac_dim, scope='continuous_logits', n_layers=self.n_layers, size=self.size)
         logstd = tf.Variable(tf.zeros(self.ac_dim), name='logstd')
         self.parameters = (mean, logstd)
@@ -118,7 +118,7 @@ class MLPPolicySL(MLPPolicy):
         true_actions = self.acs_labels_na
         predicted_actions = self.sample_ac
 
-        # TODO define the loss that will be used to train this policy
+        # (DONE) TODO define the loss that will be used to train this policy
         # HINT1: remember that we are doing supervised learning
         # HINT2: use tf.losses.mean_squared_error
         self.loss = tf.losses.mean_squared_error(labels=true_actions,
