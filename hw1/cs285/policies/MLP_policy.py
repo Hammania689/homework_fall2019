@@ -104,6 +104,32 @@ class MLPPolicySL(MLPPolicy):
         The relevant functions to define are included below.
     """
 
+    def __init__(self,
+                 sess,
+                 ac_dim,
+                 ob_dim,
+                 n_layers,
+                 size,
+                 learning_rate=1e-4,
+                 training=True,
+                 policy_scope='policy_vars',
+                 discrete=False, # unused for now
+                 nn_baseline=False, # unused for now
+                 **kwargs):
+
+        super(MLPPolicySL, self).__init__(sess,
+                                          ac_dim,
+                                          ob_dim,
+                                          n_layers,
+                                          size,
+                                          learning_rate=1e-4,
+                                          training=True,
+                                          policy_scope='policy_vars',
+                                          discrete=False, # unused for now
+                                          nn_baseline=False, # unused for now
+                                          **kwargs)
+
+
     def define_placeholders(self):
         # placeholder for observations
         self.observations_pl = tf.placeholder(shape=[None, self.ob_dim], name="ob", dtype=tf.float32)
