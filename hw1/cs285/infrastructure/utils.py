@@ -42,9 +42,13 @@ def sample_trajectory(env, policy, max_path_length, render=False, render_mode=('
         next_obs.append(ob)
         rewards.append(rew)
 
-        # TODO end the rollout if the rollout ended 
+        # (DONE) TODO end the rollout if the rollout ended 
         # HINT: rollout can end due to done, or due to max_path_length
-        rollout_done = TODO # HINT: this is either 0 or 1
+        # rollout_done = (DONE) TODO # HINT: this is either 0 or 1
+        if steps == max_path_length:
+            rollout_done = 1
+        else:
+            rollout_done = 0
         terminals.append(rollout_done)
         
         if rollout_done: 
