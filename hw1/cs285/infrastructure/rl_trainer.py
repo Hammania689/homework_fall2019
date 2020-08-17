@@ -115,7 +115,7 @@ class RL_Trainer(object):
 
             # relabel the collected obs with actions from a provided expert policy
             if relabel_with_expert and itr>=start_relabel_with_expert:
-                paths = self.do_relabel_with_expert(expert_policy, paths) ## TODO implement this function below
+                paths = self.do_relabel_with_expert(expert_policy, paths) ## (DONE) TODO implement this function below
 
             # add collected data to replay buffer
             self.agent.add_to_replay_buffer(paths)
@@ -198,9 +198,13 @@ class RL_Trainer(object):
     def do_relabel_with_expert(self, expert_policy, paths):
         print("\nRelabelling collected observations with labels from an expert policy...")
 
-        # TODO relabel collected obsevations (from our policy) with labels from an expert policy
+        # (DONE) TODO relabel collected obsevations (from our policy) with labels from an expert policy
         # HINT: query the policy (using the get_action function) with paths[i]["observation"]
         # and replace paths[i]["action"] with these expert labels
+
+        for i in range(len(paths)):
+            expert_label = expert_policy.get_action(paths[i]["observation"])
+            paths[i]["action"] = expert_label
 
         return paths
 
