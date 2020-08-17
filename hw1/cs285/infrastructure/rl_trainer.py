@@ -70,9 +70,9 @@ class RL_Trainer(object):
         ## INIT VARS
         #############
 
-        ## TODO initialize all of the TF variables (that were created by agent, etc.)
+        ## (DONE) TODO initialize all of the TF variables (that were created by agent, etc.)
         ## HINT: use global_variables_initializer
-        TODO
+        tf.global_variables_initializer()
 
     def run_training_loop(self, n_iter, collect_policy, eval_policy,
                         initial_expertdata=None, relabel_with_expert=False,
@@ -109,7 +109,7 @@ class RL_Trainer(object):
             # collect trajectories, to be used for training
             training_returns = self.collect_training_trajectories(itr,
                                 initial_expertdata, collect_policy,
-                                self.params['batch_size']) ## TODO implement this function below
+                                self.params['batch_size']) ## (DONE) TODO implement this function below
             paths, envsteps_this_batch, train_video_paths = training_returns
             self.total_envsteps += envsteps_this_batch
 
