@@ -121,7 +121,7 @@ class RL_Trainer(object):
             self.agent.add_to_replay_buffer(paths)
 
             # train agent (using sampled data from replay buffer)
-            self.train_agent() ## TODO implement this function below
+            self.train_agent() ## (DONE) TODO implement this function below
 
             # log/save
             if self.log_video or self.log_metrics:
